@@ -102,9 +102,9 @@ def print_header(data, table=False, printcsv=False):
         print(output.getvalue().rstrip())
     else:
         if table:
-            print("{0:<18} {1:<8} {2:<8} {3:<8} {4:<8} {5:<8} {6:<8} \
-            {7:<8} {8:<8} {9:<8} {10:<8} {11:<8} {12:<8} {13:<8} \
-            {14:<14}".format(*data.keys()))
+            print("{0:<18} {1:>8} {2:>8} {3:>8} {4:>8} {5:>8} {6:>8} \
+            {7:>8} {8:>8} {9:>8} {10:>8} {11:>8} {12:>8} {13:>8} \
+            {14:>14}".format(*data.keys()))
         else:
             print("{0:<18} {1:<10}".format('Stat', 'Value'))
 
@@ -122,9 +122,9 @@ def print_stats(data, table=False, printcsv=False):
         print(output.getvalue().rstrip())
     else:
         if table:
-            print("{0:<18} {1:<8} {2:<8} {3:<8} {4:<8} {5:<8} {6:<8} \
-            {7:<8} {8:<8} {9:<8} {10:<8} {11:<8} {12:<8} {13:<8} \
-            {14:<14}".format(*data.values()))
+            print("{0:<18} {1:>8} {2:>8} {3:>8} {4:>8} {5:>8} {6:>8} \
+            {7:>8} {8:>8} {9:>8} {10:>8} {11:>8} {12:>8} {13:>8} \
+            {14:>14}".format(*data.values()))
         else:
             for key in data:
                 print("{0:<18} {1:<10}".format(key, data[key]))

@@ -60,6 +60,8 @@ def parse_cmdline():
                       default: %default', default=1)
     parser.add_option('-c', '--count', dest='count', action='store', type='int',
                       help='Number of iteration', default=0)
+    parser.add_option('--header-repeat', dest='hrepeat', action='store', \
+                      type='int', help='Repeat header each X lines', default=0)
 
     (options, args) = parser.parse_args()
 
@@ -143,6 +145,7 @@ def main():
 
     sleep_interval = options.interval
     max_loop = options.count
+    header_repeat = options.hrepeat
 
     # Some values may not be present in mdt_stats, we have to initialise that
     # dictionnary entirely to avoid missing values
@@ -171,6 +174,7 @@ def main():
         print_header(deltas, table=options.table, printcsv=options.csv)
 
     current_loop = 1
+    repeat_count = 1
     while 1:
         current_stats = read_stats(options.target)
 
@@ -188,6 +192,14 @@ def main():
                 break
             else:
                 current_loop += 1
+
+        if header_repeat > 0 and repeat_count % header_repeat == 0:
+            print_header(deltas, table=options.table, printcsv=options.csv)
+            repeat_count = 1
+
+        if header_repeat > 0:
+            repeat_count += 1
+
         print_stats(deltas, table=options.table, printcsv=options.csv)
         time.sleep(sleep_interval)
 

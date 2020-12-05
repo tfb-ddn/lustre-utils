@@ -166,6 +166,7 @@ def main():
     previous_stats['statfs'] = 0
     previous_stats['sync'] = 0
     previous_stats['write_bytes'] = 0
+    previous_stats['read_bytes'] = 0
     previous_stats['samedir_rename'] = 0
     previous_stats['crossdir_rename'] = 0
 
